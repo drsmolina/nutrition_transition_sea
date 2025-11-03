@@ -1,0 +1,34 @@
+project:
+  name: nutrition_transition_sea
+  seed: 42
+paths:
+  raw: data_raw
+  tidy: data_tidy
+  figs: figures
+  reports: reports
+panel:
+  countries_iso3: [PHL, THA, VNM, MYS, IDN, SGP, KHM, LAO]
+  years: [2000, 2020]
+  max_interp_gap_years: 2
+worldbank:
+  indicators:
+    diabetes_rate: SH.STA.DIAB.ZS
+    gdp_pc_const: NY.GDP.PCAP.KD
+    overweight_rate: SH.STA.OWAD.ZS
+  timeout_sec: 30
+faostat:
+  domain: Food Balance Sheets
+  unit_kcal: "kcal/cap/day"
+  category_map_csv: fao_category_map.csv
+features:
+  processed_to_traditional:
+    numerator: [meat, sugar, oils]
+    denominator: [staples, fruitveg]
+models:
+  outcome: diabetes_rate
+  controls: [log_gdp_pc]
+  fixed_effects: [country, year]
+  use_linearmodels: true
+viz:
+  dpi: 160
+  country_focus: PHL

@@ -1,0 +1,16 @@
+# data
+data_raw/
+**/*.zip
+**/*.gz
+**/*.7z
+.parquet-cache/
+
+# notebooks & cache
+.ipynb_checkpoints/
+**/__pycache__/
+*.pyc
+
+# env
+.venv/
+.env
+.DS_Store
